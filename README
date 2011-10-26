@@ -1,0 +1,20 @@
+To test, create a new virtualenv:
+
+$ cd .. ; virtualenv --no-site-packages celerytest ; cd -
+$ pip install celery
+
+Then to start a server with celerybeat
+
+$ celeryd -B -l INFO 
+
+and if you like, another celerybeat server with a 'ham' queue
+
+$ celeryd -Q ham -l INFO --config=celeryconfig_ham 
+
+And test the two scripts that create tasks
+
+$ python plaintask.py
+8
+
+$ python hamtask.py
+8 hams
